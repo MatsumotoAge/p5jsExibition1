@@ -9,7 +9,7 @@ const canvasHeight = 760; // キャンバスの高さ
 
 setup = () => {
     noSmooth()
-    pixelDensity(0.6);
+    pixelDensity(0.7);
     const canvas = createCanvas(canvasWidth, canvasHeight);  // キャンバスのサイズを設定
    
     canvas.parent('#container');  // キャンバスを指定した要素に配置
@@ -18,7 +18,7 @@ setup = () => {
     textSize(8);  // テキストのサイズを設定
     strokeWeight(0.5);  // ストロークの太さを設定
 
-    for (let i = 0; i < 120; i++) {  // 200個のエージェントを生成
+    for (let i = 0; i < 40; i++) {  // 200個のエージェントを生成
         agents.push(new Agent(i));  // エージェントを配列に追加
     }
 
@@ -38,8 +38,10 @@ draw = () => {
 
         if (mouseIsPressed) {  // マウスが押されている場合
             agent.attract(mouse, 200);  // マウスに引き寄せる
+            agent.maxSpeed = 17.0
         } else {
             agent.repel(mouse, 100);  // マウスから反発する
+            agent.maxSpeed = 1.5
         }
 
         agent.flock(agents);  // エージェントの群れの振る舞いを適用
