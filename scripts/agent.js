@@ -23,7 +23,7 @@ class Agent {
         );  // ランダムな速度で初期化
 
         this.maxForce = 0.2;  // 最大力を設定
-        this.maxSpeed = 4.0;  // 最大速度を設定
+        this.maxSpeed = 3.0;  // 最大速度を設定
 
         this.separationRadius = 25;  // 分離の半径を設定
         this.alignRadius = 40;  // 整列の半径を設定
@@ -51,7 +51,7 @@ class Agent {
 //   drawingContext.shadowColor = color(245, 228, 184);
   //以上新
   noSmooth()
-  stroke('rgb(245, 206, 147)');
+  stroke('rgb(220, 222, 202)');
   strokeWeight(1);
         const c = map(sin(radians(this.t)), -90, 90, 80, 355);
         //fill(c);  // 色の設定
@@ -59,8 +59,14 @@ class Agent {
         textSize(width / 230);
         circle(this.position.x+random(-50,50), this.position.y+random(-50,50),2);
         circle(this.position.x+random(-50,50), this.position.y+random(-50,50),2);
+
+
+        line(this.position.x, this.position.y,  this.position.x+random(-50,50), this.position.y+random(-50,50));
+        line(this.position.x, this.position.y,  this.position.x+random(-50,50), this.position.y+random(-50,50));
+        line(this.position.x, this.position.y,  this.position.x+random(-50,50), this.position.y+random(-50,50));
+
         
-        //text("⭐️",this.position.x+random(-50,50), this.position.y+random(-50,50));
+        
         
 
         //以下ついか
@@ -79,7 +85,7 @@ class Agent {
             const acceleration = p5.Vector.sub(target, this.position);  // 目標位置とエージェントの間のベクトルを計算
             acceleration.setMag(radius / dist);  // 加速度の大きさを調整
             acceleration.limit(this.maxForce);  // 加速度を最大力に制限
-            this.velocity.add(acceleration);  // 速度に加速度を加える
+            this.velocity.add(acceleration * 113);  // 速度に加速度を加える
         }
     }
 
